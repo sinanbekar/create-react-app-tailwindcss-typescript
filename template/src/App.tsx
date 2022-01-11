@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -18,15 +18,19 @@ function App() {
         >
           Learn React
         </a>
-        <p className="mt-5 p-2 bg-blue-300 text-gray-800">TailwindCSS</p>
-        <a
-          className="text-xl mt-2"
-          href="https://tailwindcss.com/docs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TailwindCSS
-        </a>
+        <div className="flex flex-col items-center justify-center">
+          <p className="mt-5 p-2 text-center bg-gray-900 text-gray-200 opacity-75 rounded-md">
+            Tailwind CSS v3.0
+          </p>
+          <a
+            className="text-xl text-center mt-2 text-blue-400"
+            href="https://tailwindcss.com/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn Tailwind CSS
+          </a>
+        </div>
       </header>
     </div>
   );
