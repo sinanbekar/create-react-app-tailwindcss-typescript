@@ -1,0 +1,40 @@
+name: Update template.json
+on:
+  schedule:
+    - cron: 0 0 * * * # Every day
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  update-dep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Update template.json
+        run: node ./.github/workflows/generateTemplateJSON.js
+
+      - uses: technote-space/get-diff-action@v6
+        id: git-diff
+        with:
+          FILES: template.json
+
+      - name: Bump version
+        if: steps.git-diff.outputs.diff
+        run: npm version patch
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: "build(deps): bump template.json dependencies"
+          title: "build(deps): bump template.json dependencies"
+          body: |
+            - Dependency updates
+
+            Auto-generated
+
+          branch: update-dependencies
