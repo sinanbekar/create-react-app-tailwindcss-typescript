@@ -1,6 +1,6 @@
 {
   "name": "cra-template-simple-tailwindcss-typescript",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Simple Create React App TypeScript template with Tailwind CSS and daily updated dependencies.",
   "keywords": [
     "create-react-app",
